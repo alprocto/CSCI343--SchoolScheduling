@@ -14,40 +14,37 @@ import java.util.*;
  */
 public class Class {
 
-    protected static ArrayList<Class> classes = new ArrayList();
-    private static ArrayList<String> buildingCodes = new ArrayList();
-
-    private int classID;
     private int credits;
     private int month;
     private int day;
     private int year;
     private int hour;
     private int minute;
+    private int length;
     private Boolean mondaySchedule;
-    
-    
+    private Boolean tuesdaySchedule;
+    private Boolean wednesdaySchedule;
+    private Boolean thursdaySchedule;
+    private Boolean fridaySchedule;
+    private Boolean saturdaySchedule;
 
     public static Class random() {
         Class temp = new Class();
         Random rand = new Random();
-        temp.buildingName = Surname.random();
-        temp.buildingCode = temp.buildingName.substring(0, 3).toUpperCase();
-        temp.numberOfFloors = rand.nextInt(4) + 2;                    //3 to 5 floors
-        temp.elavatorAccess = rand.nextBoolean();
-        temp.siteParkingAvailable = rand.nextBoolean();
-        if (buildingCodes.contains(temp.buildingCode)) {
-            return random();
-        } else {
-            buildingCodes.add(temp.buildingCode);
-            buildings.add(temp);
-            return temp;
+        temp.credits = rand.nextInt(4) + 1;                    //1 to 4 credits
+        temp.mondaySchedule = rand.nextBoolean();
+        temp.tuesdaySchedule = rand.nextBoolean();
+        temp.wednesdaySchedule = rand.nextBoolean();
+        temp.thursdaySchedule = rand.nextBoolean();
+        temp.fridaySchedule = rand.nextBoolean();
+        temp.saturdaySchedule = rand.nextBoolean();
+        temp.length = rand.nextInt(10) * 15 + 45;
+        
 
-        }
+        return temp;
     }
 
-    @Override
     public String toString() {
-        return buildingCode.toString() + ", " + buildingName + ", " + numberOfFloors + ", " + elavatorAccess + ", " + siteParkingAvailable;
+        return month + ", " + day + ", " + year + ", " + hour + ", " + minute + ", " + length + ", " + mondaySchedule + ", " + tuesdaySchedule + ", " + wednesdaySchedule + ", " + thursdaySchedule + ", " + fridaySchedule + ", " + saturdaySchedule;
     }
 }
