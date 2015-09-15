@@ -22,6 +22,9 @@ public class test2 {
             System.out.println(temp.toString());
         }
         
+        System.out.println(Class.random().toString());
+        System.out.println(Class.random().toString());
+        System.out.println(Class.random().toString());
 //        Sections.initialize(new File("coursescsv.csv"), new File("sections.csv"));
     }
         
