@@ -39,6 +39,11 @@ public class Class {
         temp.fridaySchedule = rand.nextBoolean();
         temp.saturdaySchedule = rand.nextBoolean();
         temp.length = rand.nextInt(10) * 15 + 45;
+        temp.month = rand.nextInt(12)+1;
+        temp.day = rand.nextInt(28)+1;
+        temp.hour = rand.nextInt(12)+8;
+        temp.minute = rand.nextInt(4)*15;
+        temp.year = rand.nextInt(5)+2012;
         
 
         return temp;
