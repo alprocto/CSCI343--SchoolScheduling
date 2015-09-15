@@ -39,6 +39,8 @@ public class Address {
                 PostalCode temp = new PostalCode(parts[1], parts[3], parts[0]);
 //                System.out.println(temp.toString());
                 postalCodes.add(temp);
+            } else{
+//                System.out.println(line);
             }
 
         }
@@ -58,6 +60,28 @@ public class Address {
     public String toString() {
         return number + " " + street + ", " + code.toString();
     }
+    
+    public int getStreetNumber(){
+        return number;
+    }
+    
+    public String getStreet(){
+        return street;
+    }
+    
+    public String getCity(){
+        return code.city;
+    }
+
+    public String getState(){
+        return code.state;
+    }
+    
+    public String getZipCode(){
+        return code.postalCode;
+    }
+    
+    
 
 //           generateAddress
 }
