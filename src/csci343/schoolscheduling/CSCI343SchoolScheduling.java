@@ -20,12 +20,20 @@ public class CSCI343SchoolScheduling {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
-        Address.initialize(new File("streetNames.txt"), new File("us_postal_codes.csv"));
+        setup();
+        
         for(int i =0;i<20;i++){
-        System.out.println(Address.random().toString());
-            
+            System.out.println(Surname.random());
+        System.out.println(Address.random().toString());    
+        System.out.println();
         }
         // TODO code application logic here
     }
     
+    
+    private static void setup() throws FileNotFoundException{
+        Address.initialize(new File("streetNames.txt"), new File("us_postal_codes.csv"));
+        Surname.initialize(new File("lastNames.txt"), 500);             //limit to first 500 names
+        
+    }
 }
