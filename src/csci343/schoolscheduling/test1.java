@@ -5,18 +5,23 @@
  */
 package csci343.schoolscheduling;
 
-import java.io.FileNotFoundException;
+import java.io.*;
 
 /**
  *
  * @author alprocto
  */
 public class test1 {
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException{
+        FirstName.initialize(new File("names\\yob1990.txt"), 100);
+//        for (int i = 0; i < 20; i++) {
+//            System.out.println(FirstName.n);
+//            System.out.println(Address.random().toString());
+//            System.out.println();
+//        }
         for (int i = 0; i < 20; i++) {
-            System.out.println(Surname.random());
-            System.out.println(Address.random().toString());
-            System.out.println();
+            Person temp = new Person();
+            System.out.println(temp.toString());
         }
     }
 }
