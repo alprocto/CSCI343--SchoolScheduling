@@ -26,12 +26,6 @@ public class CSCI343SchoolScheduling {
         setup();
         test1.main(args);
         test2.main(args);
-
-        for (int i = 0; i < 20; i++) {
-            System.out.println(Surname.random());
-            System.out.println(Address.random().toString());
-            System.out.println();
-        }
         // TODO code application logic here
     }
 

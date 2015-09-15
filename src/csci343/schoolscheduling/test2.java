@@ -14,7 +14,11 @@ import java.io.File;
 public class test2 {
 
     public static void main(String[] args) {
-        Sections.initialize(new File("coursescsv.csv"), new File("sections.csv"));
+        for(int x=0; x<10; x++){
+        System.out.println(Building.random().toString());
+        }
+//        Sections.initialize(new File("coursescsv.csv"), new File("sections.csv"));
     }
+        
 
 }

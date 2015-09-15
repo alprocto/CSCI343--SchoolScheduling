@@ -13,5 +13,10 @@ import java.io.FileNotFoundException;
  */
 public class test1 {
     public static void main(String[] args){
+        for (int i = 0; i < 20; i++) {
+            System.out.println(Surname.random());
+            System.out.println(Address.random().toString());
+            System.out.println();
+        }
     }
 }
