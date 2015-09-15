@@ -9,9 +9,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
- * Last names from The Census Bureau (http://www2.census.gov/topics/genealogy/1990surnames/dist.all.last)
- * First names from Social Security Administration (http://www.ssa.gov/OACT/babynames/limits.html)
- * City, State, and Zip Codes from https://www.aggdata.com/node/86
+ * Last names from The Census Bureau
+ * (http://www2.census.gov/topics/genealogy/1990surnames/dist.all.last) First
+ * names from Social Security Administration
+ * (http://www.ssa.gov/OACT/babynames/limits.html) City, State, and Zip Codes
+ * from https://www.aggdata.com/node/86
+ *
  * @author alprocto
  */
 public class CSCI343SchoolScheduling {
@@ -21,19 +24,20 @@ public class CSCI343SchoolScheduling {
      */
     public static void main(String[] args) throws FileNotFoundException {
         setup();
-        
-        for(int i =0;i<20;i++){
+        test1.main(args);
+        test2.main(args);
+
+        for (int i = 0; i < 20; i++) {
             System.out.println(Surname.random());
-        System.out.println(Address.random().toString());    
-        System.out.println();
+            System.out.println(Address.random().toString());
+            System.out.println();
         }
         // TODO code application logic here
     }
-    
-    
-    private static void setup() throws FileNotFoundException{
+
+    private static void setup() throws FileNotFoundException {
         Address.initialize(new File("streetNames.txt"), new File("us_postal_codes.csv"));
         Surname.initialize(new File("lastNames.txt"), 500);             //limit to first 500 names
-        
+
     }
 }
