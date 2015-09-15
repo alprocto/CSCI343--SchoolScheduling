@@ -17,6 +17,11 @@ public class test2 {
         for(int x=0; x<10; x++){
         System.out.println(Building.random().toString());
         }
+        for(int i=0; i<Building.classRooms.size(); i++){
+            ClassRoom temp = Building.classRooms.get(i);
+            System.out.println(temp.toString());
+        }
+        
 //        Sections.initialize(new File("coursescsv.csv"), new File("sections.csv"));
     }
         
