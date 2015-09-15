@@ -21,6 +21,10 @@ public class CSCI343SchoolScheduling {
      */
     public static void main(String[] args) throws FileNotFoundException {
         Address.initialize(new File("streetNames.txt"), new File("us_postal_codes.csv"));
+        for(int i =0;i<20;i++){
+        System.out.println(Address.random().toString());
+            
+        }
         // TODO code application logic here
     }
     

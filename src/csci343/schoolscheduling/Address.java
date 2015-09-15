@@ -13,13 +13,13 @@ import java.util.*;
  * @author alprocto
  */
 public class Address {
+
     private static ArrayList<String> streetNames;
     private static ArrayList<PostalCode> postalCodes;
-    
+
     private int number;
     private String street;
     private PostalCode code;
-    
 
     public static void initialize(File streetFile, File postalCodesFile) throws FileNotFoundException {
         streetNames = new ArrayList();
@@ -35,28 +35,29 @@ public class Address {
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String parts[] = line.split(",");
-            PostalCode temp = new PostalCode(parts[1], parts[3], parts[0]);
-//            System.out.println(temp.toString());
-            postalCodes.add(temp);
-            
+            if (parts.length >= 4) {
+                PostalCode temp = new PostalCode(parts[1], parts[3], parts[0]);
+//                System.out.println(temp.toString());
+                postalCodes.add(temp);
+            }
+
         }
-        
+
     }
-    
-    public static Address random(){
+
+    public static Address random() {
         Address address = new Address();
         Random rand = new Random();
         address.street = streetNames.get(rand.nextInt(streetNames.size()));
         address.code = postalCodes.get(rand.nextInt(postalCodes.size()));
-        address.number = rand.nextInt(9900) + 100;
+        address.number = rand.nextInt(4900) + 100;
         return address;
-    }  
-    
-    @Override
-    public String toString(){
-        return 
     }
-    
+
+    @Override
+    public String toString() {
+        return number + " " + street + ", " + code.toString();
+    }
 
 //           generateAddress
 }
