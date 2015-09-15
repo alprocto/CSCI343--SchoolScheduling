@@ -5,12 +5,16 @@
  */
 package csci343.schoolscheduling;
 
+import java.io.File;
+
 /**
  *
  * @author alprocto
  */
 public class test2 {
-        public static void main(String[] args){
+
+    public static void main(String[] args) {
+        Sections.initialize(new File("coursescsv.csv"), new File("sections.csv"));
     }
 
 }
