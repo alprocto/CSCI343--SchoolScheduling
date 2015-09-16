@@ -13,6 +13,7 @@ import java.util.*;
  * @author alprocto
  */
 public class Class {
+    protected static ArrayList<Class> classes = new ArrayList();
 
     private int credits;
     private int month;
@@ -44,7 +45,7 @@ public class Class {
         temp.hour = rand.nextInt(12)+8;
         temp.minute = rand.nextInt(4)*15;
         temp.year = rand.nextInt(5)+2012;
-        
+        classes.add(temp);
 
         return temp;
     }
