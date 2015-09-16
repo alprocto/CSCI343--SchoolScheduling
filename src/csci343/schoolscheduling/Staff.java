@@ -15,7 +15,7 @@ import java.util.*;
 public class Staff {
     
    private static String positions[]={"Faculty", "Staff"};
-   
+   private static ArrayList<Staff> staff= new ArrayList();
     private int salary;
     private int month;
     private int day;
@@ -33,7 +33,10 @@ public class Staff {
         temp.year = rand.nextInt(5)+2012;
         int i=rand.nextInt(2);
         temp.position= positions[i];
-        
+        staff.add(temp);
+        if(i==0){
+            Faculty.random(staff.size()-1);
+        }
         return temp;
     }
     public String toString(){

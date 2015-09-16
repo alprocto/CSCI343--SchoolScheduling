@@ -14,6 +14,7 @@ import java.io.*;
  * @author Amanda
  */
 public class Faculty {
+    private int staffID;
     private String title;
     private String status;
     private Boolean tenured;
@@ -21,12 +22,13 @@ public class Faculty {
     protected static String statuses[]={"Retired", "Full Time", "Part Time", "Visiting"};
     //public Faculty (int staffID);
     
-    public static Faculty random(){
+    public static Faculty random(int id){
         Faculty temp = new Faculty();
         Random rand = new Random();
         temp.tenured= rand.nextBoolean();
         temp.title= positions[rand.nextInt(positions.length)];
         temp.status= statuses[rand.nextInt(statuses.length)];
+        temp.staffID=id;
         return temp;
         
     }
