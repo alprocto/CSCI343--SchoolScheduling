@@ -12,6 +12,7 @@ import java.util.*;
  * @author alprocto
  */
 public class Subject {
+    protected static String categories[];
     protected String category;
     protected String subjectName;
     protected String description;

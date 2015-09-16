@@ -33,6 +33,6 @@ public class CSCI343SchoolScheduling {
         Address.initialize(new File("streetNames.txt"), new File("us_postal_codes.csv"));
         Surname.initialize(new File("lastNames.txt"), 500);             //limit to first 500 names
         FirstName.initialize(new File("names\\yob1990.txt"), 250);      //limit to first 250 female and first 250 male names
-
+        Student.generateStudents(50);
     }
 }
