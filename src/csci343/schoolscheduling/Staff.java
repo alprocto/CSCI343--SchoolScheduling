@@ -14,11 +14,15 @@ import java.util.*;
  */
 public class Staff {
     
-    //private String positions[]={"Professor", "Associate Profesor", "Assistant Professor", "Lecturer", "Adjuct Professor", "Administrative Assistant", "Staff"};
+   private static String positions[]={"Faculty", "Staff"};
+   
     private int salary;
     private int month;
     private int day;
     private int year;
+    private String position;
+    
+    
     
    public static Staff random(){
        Staff temp = new Staff();
@@ -27,6 +31,8 @@ public class Staff {
         temp.month = rand.nextInt(12)+1;
         temp.day = rand.nextInt(28)+1;
         temp.year = rand.nextInt(5)+2012;
+        int i=rand.nextInt(2);
+        temp.position= positions[i];
         
         return temp;
     }
