@@ -5,6 +5,8 @@
  */
 package csci343.schoolscheduling;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -12,10 +14,13 @@ import java.util.*;
  * @author alprocto
  */
 public class Subject {
-    protected static String categories[];
-    protected String category;
+    protected static ArrayList<Subject> subjects = new ArrayList();
+   
+    protected int categoryID;
+    protected String subjectCode;
     protected String subjectName;
-    protected String description;
+    protected String subjectPreReq;
+    protected String subjectDescription;
     
     /**
      *
@@ -23,15 +28,34 @@ public class Subject {
      * @param subjectName
      * @param description
      */
-    public Subject(String category, String subjectName, String description){
-        this.category=category;
+    public static void initialize(File subjectFile) throws FileNotFoundException{
+        Scanner scanner = new Scanner(subjectFile);
+        scanner.nextLine();         //get rid of first line
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            String parts[] = line.split(",");
+            if (parts.length >= 3) {
+                Subject temp = new Subject(parts[0], parts[1], parts[2], parts[3], parts[4]);
+//                System.out.println(temp.toString());
+                subjects.add(temp);
+            } else{
+//                System.out.println(line);
+            }
+
+        }
+    }
+    public Subject(String category, String subjectName, String description, String preReq, String code){
+        this.categoryID=Category.getID(category);
         this.subjectName=subjectName;
-        this.description=description;
+        this.subjectDescription=description;
+        this.subjectCode = code;
+        this.subjectPreReq=preReq;
+        
     }
     
     @Override
     public String toString(){
-        return category + "\t" + subjectName + "\t" + description;
+        return "-1";
     }
            
 //           generateAddress
