@@ -12,16 +12,31 @@ import java.util.ArrayList;
  * @author alprocto
  */
 public class Category {
-    protected static ArrayList<String> categories = new ArrayList();
-    private String description; 
+
+    protected static ArrayList<Category> categories = new ArrayList();
+    private String description;
+    private int departmentID;
+
     public static int getID(String input) {
-        if(categories.contains((Object)input)){
-            return categories.indexOf((Object)input);
-        } else{
-            categories.add(input);
-            return categories.size()-1;
-                    
+        for (int i = 0; i < categories.size(); i++) {
+            if (categories.get(i).description.equals(input)) {
+                return i;
+            }
         }
+
+        Category temp = new Category();
+        temp.departmentID = Department.nextDepartment();
+        temp.description = input;
+        categories.add(temp);
+        return categories.size() - 1;
     }
- 
+    
+    public int getDepartmentID(){
+        return departmentID;
+    }
+    
+    public String getDescription(){
+        return description;
+    }
+
 }

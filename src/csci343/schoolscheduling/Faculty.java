@@ -14,7 +14,8 @@ import java.io.*;
  * @author Amanda
  */
 public class Faculty {
-    private int staffID;
+    protected static ArrayList<Faculty> list = new ArrayList();
+    protected int staffID;
     private String title;
     private String status;
     private Boolean tenured;
@@ -29,6 +30,7 @@ public class Faculty {
         temp.title= positions[rand.nextInt(positions.length)];
         temp.status= statuses[rand.nextInt(statuses.length)];
         temp.staffID=id;
+        list.add(temp);
         return temp;
         
     }
