@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,14 +14,14 @@ import java.util.*;
  *
  * @author alprocto
  */
-public class Subject {
-    protected static ArrayList<Subject> subjects = new ArrayList();
+//public class Subject {
+  //  protected static ArrayList<Subject> subjects = new ArrayList();
    
-    protected int categoryID;
-    protected String subjectCode;
-    protected String subjectName;
-    protected String subjectPreReq;
-    protected String subjectDescription;
+  //  protected int categoryID;
+  //  protected String subjectCode;
+   // protected String subjectName;
+    //protected String subjectPreReq;
+   // protected String subjectDescription;
     
     /**
      *
@@ -29,7 +29,7 @@ public class Subject {
      * @param subjectName
      * @param description
      */
-    public static void initialize(File subjectFile) throws FileNotFoundException{
+    /*public static void initialize(File subjectFile) throws FileNotFoundException{
         Scanner scanner = new Scanner(subjectFile);
         scanner.nextLine();         //get rid of first line
         while (scanner.hasNextLine()) {
@@ -46,7 +46,7 @@ public class Subject {
         }
     }
     public Subject(String category, String subjectName, String description, String preReq, String code){
-        this.categoryID=Category.getID(category);
+        this.categoryID=Section.getID(category);
         this.subjectName=subjectName;
         this.subjectDescription=description;
         this.subjectCode = code;
@@ -61,49 +61,4 @@ public class Subject {
            
 //           generateAddress
     
-    public int getID(){
-        
-    }
-    
-}
-=======
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package csci343.schoolscheduling;
-
-import java.util.*;
-
-/**
- *
- * @author alprocto
- */
-public class Subject {
-    protected static String categories[];
-    protected String category;
-    protected String subjectName;
-    protected String description;
-    
-    /**
-     *
-     * @param category
-     * @param subjectName
-     * @param description
-     */
-    public Subject(String category, String subjectName, String description){
-        this.category=category;
-        this.subjectName=subjectName;
-        this.description=description;
-    }
-    
-    @Override
-    public String toString(){
-        return category + "\t" + subjectName + "\t" + description;
-    }
-           
-//           generateAddress
-    
-  
-}
+ */   
