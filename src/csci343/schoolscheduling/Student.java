@@ -22,5 +22,9 @@ public static void generateStudents(int number){
         students.add(temp);
     }
 }    
+
+public double getGPA(){
+    return Student_Schedules.getGPA(students.indexOf(this));
+}
     
 }

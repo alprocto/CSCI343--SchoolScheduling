@@ -40,47 +40,88 @@ public class CSCI343SchoolScheduling {
         Department.initialize();
         Subject.initialize(new File("coursescsv.csv"));
         Class.generateClasses(100);
+        Faculty_Categories.generate(50);
+        Faculty_Classes.generate(5);
+        Faculty_Subjects.generate(5);
+        Student_Schedules.generate(100);
     }
 
-    private static String getData(){
-       return staff() + "\n\n"+departments();
+    private static String getData() {
+        return staff() + "\n\n" + departments() + "\n\n" + facultyCategories() + "\n\n" + faculty();
     }
-    
-    private static String staff(){
+
+    private static String staff() {
         String output = new String();
-       output= "INSERT INTO\n" +
-        "Staff(StaffID, StfFirstName, StfLastName, StfStreetAddress, StfState, StfZipCode, StfAreaCode, StfPhoneNumber, Salary, DateHired, Position)\n" + 
-        "VALUES ";
-               
-               for(int i = 0; i<Staff.staff.size(); i++){
-                   Staff temp = Staff.staff.get(i);
-                   Person tempPerson = new Person();
-                   output = output + "(" + i +","+tempPerson.getFirstName()+","+tempPerson.getLastName()+","+tempPerson.getStreetAddress()+","+tempPerson.getState()+","+tempPerson.getZipCode()+","+tempPerson.getAreaCode()+","+tempPerson.getPhoneNumber()+","+temp.salary+","+temp.year+"-"+temp.month+"-"+temp.day+","+temp.position+")";
-                   if(i==Staff.staff.size()-1){
-                       output=output+";";
-                   } else{
-                       output=output+",\n";
-                   }
-               }
-               return output;
-        
+        output = "INSERT INTO\n"
+                + "Staff(StaffID, StfFirstName, StfLastName, StfStreetAddress, StfState, StfZipCode, StfAreaCode, StfPhoneNumber, Salary, DateHired, Position)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Staff.staff.size(); i++) {
+            Staff temp = Staff.staff.get(i);
+            Person tempPerson = new Person();
+            output = output + "(" + i + "," + tempPerson.getFirstName() + "," + tempPerson.getLastName() + "," + tempPerson.getStreetAddress() + "," + tempPerson.getState() + "," + tempPerson.getZipCode() + "," + tempPerson.getAreaCode() + "," + tempPerson.getPhoneNumber() + "," + temp.salary + "," + temp.year + "-" + temp.month + "-" + temp.day + "," + temp.position + ")";
+            if (i == Staff.staff.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
     }
-    
-    private static String departments(){
+
+    private static String departments() {
         String output = new String();
-       output= "INSERT INTO\n" +
-            "Departments(DepartmentID, DeptName, DeptChair)\n" +
-            "VALUES ";
-               
-               for(int i = 0; i<Department.name.length; i++){
-                   output = output + "(" + i +","+Department.name[i]+","+Department.chairID[i]+")";
-                   if(i==Department.name.length-1){
-                       output=output+";";
-                   } else{
-                       output=output+",\n";
-                   }
-               }
-               return output;
-        
+        output = "INSERT INTO\n"
+                + "Departments(DepartmentID, DeptName, DeptChair)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Department.name.length; i++) {
+            output = output + "(" + i + "," + Department.name[i] + "," + Department.chairID[i] + ")";
+            if (i == Department.name.length - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
     }
+
+    private static String facultyCategories() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Faculty_Categories(CategoryID, StaffID)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Faculty_Categories.categories.size(); i++) {
+            output = output + "(" + Faculty_Categories.categories.get(i).categoryID + "," + Faculty_Categories.categories.get(i).staffID + ")";
+            if (i == Faculty_Categories.categories.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+    }
+
+    private static String faculty() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Faculty(StaffID, Title, Status, Tenured)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Faculty.list.size(); i++) {
+            Faculty temp = Faculty.list.get(i);
+            output = output + "(" + temp.staffID + "," + temp.title + "," + temp.status + "," + temp.tenured + ")";
+            if (i == Faculty.list.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
 }

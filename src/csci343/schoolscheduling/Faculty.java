@@ -16,9 +16,9 @@ import java.io.*;
 public class Faculty {
     protected static ArrayList<Faculty> list = new ArrayList();
     protected int staffID;
-    private String title;
-    private String status;
-    private Boolean tenured;
+    protected String title;
+    protected String status;
+    protected Boolean tenured;
     protected static String positions[]={"Professor", "Associate Profesor", "Assistant Professor", "Lecturer", "Adjuct Professor"};
     protected static String statuses[]={"Retired", "Full Time", "Part Time", "Visiting"};
     //public Faculty (int staffID);
