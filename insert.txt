@@ -44,11 +44,11 @@ VALUES (varchar, varchar, int, boolean, boolean);
 
 INSERT INTO
 Student_Class_Status(ClassStatus, ClassStatusDescription)
-VALUES (varchar, varchar);
+VALUES (int, varchar);
 
 INSERT INTO
-Student_Schedules(ClassStatus, Grade, Students_StudentID, Classes_ClassID, Student_Class_Status_ClassStatus)
-VALUES (varchar, decimal, int, int, varchar);
+Student_Schedules(ClassStatus, Grade, StudentID, ClassID)
+VALUES (int, decimal, int, int);
 
 INSERT INTO
 Students(StudentID, StudentFirstName, StudentLastName, StudStreetAddress, StudCity, StudState, StudZipCode, StudAreaCode, StudPhoneNumber, StudGPA, StudMajor)
