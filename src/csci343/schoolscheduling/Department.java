@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Department {
 
-    private static String name[] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
+    protected static String name[] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
     private static int count = 0;
     protected static int chairID[] = new int[name.length];
 

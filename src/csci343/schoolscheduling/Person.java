@@ -35,7 +35,7 @@ public class Person {
     }
 
     public String getStreetAddress() {
-        return address.getStreetNumber() + address.getStreet();
+        return address.getStreetNumber() + " " + address.getStreet();
     }
 
     public String getCity() {

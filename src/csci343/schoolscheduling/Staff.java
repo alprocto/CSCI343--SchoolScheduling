@@ -15,12 +15,12 @@ import java.util.*;
 public class Staff {
 
     private static String positions[] = {"Faculty", "Staff"};
-    private static ArrayList<Staff> staff = new ArrayList();
-    private int salary;
-    private int month;
-    private int day;
-    private int year;
-    private String position;
+    protected static ArrayList<Staff> staff = new ArrayList();
+    protected int salary;
+    protected int month;
+    protected int day;
+    protected int year;
+    protected String position;
 
     public static Staff random() {
         Staff temp = new Staff();

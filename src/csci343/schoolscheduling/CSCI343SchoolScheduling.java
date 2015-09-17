@@ -24,6 +24,7 @@ public class CSCI343SchoolScheduling {
      */
     public static void main(String[] args) throws FileNotFoundException {
         setup();
+        System.out.println(getData());
 //        test1.main(args);
 //        test2.main(args);
         // TODO code application logic here
@@ -39,5 +40,47 @@ public class CSCI343SchoolScheduling {
         Department.initialize();
         Subject.initialize(new File("coursescsv.csv"));
         Class.generateClasses(100);
+    }
+
+    private static String getData(){
+       return staff() + "\n\n"+departments();
+    }
+    
+    private static String staff(){
+        String output = new String();
+       output= "INSERT INTO\n" +
+        "Staff(StaffID, StfFirstName, StfLastName, StfStreetAddress, StfState, StfZipCode, StfAreaCode, StfPhoneNumber, Salary, DateHired, Position)\n" + 
+        "VALUES ";
+               
+               for(int i = 0; i<Staff.staff.size(); i++){
+                   Staff temp = Staff.staff.get(i);
+                   Person tempPerson = new Person();
+                   output = output + "(" + i +","+tempPerson.getFirstName()+","+tempPerson.getLastName()+","+tempPerson.getStreetAddress()+","+tempPerson.getState()+","+tempPerson.getZipCode()+","+tempPerson.getAreaCode()+","+tempPerson.getPhoneNumber()+","+temp.salary+","+temp.year+"-"+temp.month+"-"+temp.day+","+temp.position+")";
+                   if(i==Staff.staff.size()-1){
+                       output=output+";";
+                   } else{
+                       output=output+",\n";
+                   }
+               }
+               return output;
+        
+    }
+    
+    private static String departments(){
+        String output = new String();
+       output= "INSERT INTO\n" +
+            "Departments(DepartmentID, DeptName, DeptChair)\n" +
+            "VALUES ";
+               
+               for(int i = 0; i<Department.name.length; i++){
+                   output = output + "(" + i +","+Department.name[i]+","+Department.chairID[i]+")";
+                   if(i==Department.name.length-1){
+                       output=output+";";
+                   } else{
+                       output=output+",\n";
+                   }
+               }
+               return output;
+        
     }
 }
