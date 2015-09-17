@@ -23,7 +23,8 @@ public class Student_Schedules {
         Random rand = new Random();
         temp.studentID = rand.nextInt(Student.students.size());
         temp.classID = rand.nextInt(Class.classes.size());
-        
+        temp.classStatus = Student_Class_Status.random();
+        temp.grade = (float)rand.nextInt(5);
         
         
         schedules.add(temp);

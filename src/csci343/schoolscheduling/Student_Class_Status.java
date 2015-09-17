@@ -12,8 +12,16 @@ import java.io.*;
  * @author Amanda
  */
 public class Student_Class_Status {
-    protected static ArrayList<Student_Class_Status> status = new ArrayList<>();
-    protected String statusDescription;
+    protected static String status[] = {"status A", "status B", "status C", "status D", "status E", "status F", "status G", "status H", "status I", "status J"};
+
+    
+    public static int random() {
+        Student_Class_Status temp = new Student_Class_Status();
+        Random rand = new Random();
+        return rand.nextInt(status.length);
+    }
+    
+    
     
     
 }
