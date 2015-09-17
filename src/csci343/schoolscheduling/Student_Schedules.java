@@ -16,7 +16,7 @@ public class Student_Schedules {
     protected int studentID;
     protected int classID;
     protected int classStatus;
-    protected float grade;
+    protected double grade;
     
     public static Student_Schedules random(){
         Student_Schedules temp = new Student_Schedules();
@@ -24,7 +24,7 @@ public class Student_Schedules {
         temp.studentID = rand.nextInt(Student.students.size());
         temp.classID = rand.nextInt(Class.classes.size());
         temp.classStatus = Student_Class_Status.random();
-        temp.grade = (float)rand.nextInt(5);
+        temp.grade = (double)rand.nextInt(5);
         
         
         schedules.add(temp);
@@ -32,7 +32,22 @@ public class Student_Schedules {
         return temp;
     }
     
-    
+    public static double getGPA(int student){
+        int numOfClasses=0; 
+        double gpaPoints=0.0;
+        for(int x=0; x<schedules.size(); x++){
+            if(schedules.get(x).studentID==student){
+                numOfClasses++;
+                gpaPoints+=schedules.get(x).grade;
+            }
+        }
+        if(numOfClasses == 0){
+            return 0.0;
+        }
+        else{
+            return gpaPoints/(double)numOfClasses;
+        }
+    }
     
     
 }
