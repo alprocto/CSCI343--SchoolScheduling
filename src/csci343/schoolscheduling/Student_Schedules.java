@@ -33,19 +33,19 @@ public class Student_Schedules {
     }
     
     public static double getGPA(int student){
-        int numOfClasses=0; 
+        int numOfCredits=0; 
         double gpaPoints=0.0;
         for(int x=0; x<schedules.size(); x++){
             if(schedules.get(x).studentID==student){
-                numOfClasses++;
+                numOfCredits+=Class.classes.get(schedules.get(x).classID).credits;
                 gpaPoints+=schedules.get(x).grade;
             }
         }
-        if(numOfClasses == 0){
+        if(numOfCredits == 0){
             return 0.0;
         }
         else{
-            return gpaPoints/(double)numOfClasses;
+            return gpaPoints/(double)numOfCredits;
         }
     }
     

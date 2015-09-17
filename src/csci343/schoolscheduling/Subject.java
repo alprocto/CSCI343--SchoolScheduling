@@ -58,7 +58,6 @@ public class Subject {
         return categoryID + ", " + subjectCode + ", " + subjectName + ", " + subjectPreReq + ", " + subjectDescription;
     }
 
-//           generateAddress
     public int getID() {
         return 1;
     }

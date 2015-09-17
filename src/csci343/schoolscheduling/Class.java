@@ -30,10 +30,12 @@ public class Class {
     protected Boolean fridaySchedule;
     protected Boolean saturdaySchedule;
     protected int classRoomID;
+    protected int sujectID;
 
     public static Class random() {
         Class temp = new Class();
         Random rand = new Random();
+        temp.sujectID = rand.nextInt(Subject.subjects.size());
         temp.credits = rand.nextInt(4) + 1;                    //1 to 4 credits
         temp.mondaySchedule = rand.nextBoolean();
         temp.tuesdaySchedule = rand.nextBoolean();

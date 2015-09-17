@@ -41,13 +41,21 @@ public class CSCI343SchoolScheduling {
         Subject.initialize(new File("coursescsv.csv"));
         Class.generateClasses(100);
         Faculty_Categories.generate(50);
-        Faculty_Classes.generate(5);
-        Faculty_Subjects.generate(5);
+        Faculty_Classes.generate(20);
+        Faculty_Subjects.generate(20);
         Student_Schedules.generate(100);
     }
 
     private static String getData() {
-        return staff() + "\n\n" + departments() + "\n\n" + facultyCategories() + "\n\n" + faculty() + "\n\n" + categories() + "\n\n" +facultyCategories();
+        return staff()
+                + "\n\n" + departments()
+                + "\n\n" + facultyCategories()
+                + "\n\n" + faculty()
+                + "\n\n" + categories()
+                + "\n\n" + facultyCategories()
+                + "\n\n" + subjects()
+                + "\n\n" + facultySubjects()
+                + "\n\n" + classes();
     }
 
     private static String staff() {
@@ -151,6 +159,62 @@ public class CSCI343SchoolScheduling {
         for (int i = 0; i < Faculty_Classes.classes.size(); i++) {
             output = output + "(" + Faculty_Classes.classes.get(i).staffID + "," + Faculty_Classes.classes.get(i).classID + ")";
             if (i == Faculty_Classes.classes.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
+    private static String subjects() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Subjects(SubjectID, SubjectCode, SubjectName, SubjectPreReq, SubjectDescription, CategoryID)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Subject.subjects.size(); i++) {
+            Subject temp = Subject.subjects.get(i);
+            output = output + "(" + i + "," + temp.subjectCode + "," + temp.subjectName + "," + temp.subjectPreReq + "," + temp.subjectDescription + "," + temp.categoryID + ")";
+            if (i == Subject.subjects.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
+    private static String facultySubjects() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Faculty_Subjects(StaffID, SubjectID, ProficiencyRating)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Faculty_Subjects.subjects.size(); i++) {
+            output = output + "(" + Faculty_Subjects.subjects.get(i).staffID + "," + Faculty_Subjects.subjects.get(i).subjectID + "," + Faculty_Subjects.subjects.get(i).proficiencyRating + ")";
+            if (i == Faculty_Subjects.subjects.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
+    private static String classes() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Classes(ClassID, SubjectID, ClassRoomID, Credits, StartDate, StartTime, Duration, MondaySchedule, TuesdaySchedule, WednesdaySchedule, ThursdaySchedule, FridaySchedule, SaturdaySchedule)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Class.classes.size(); i++) {
+            Class temp = Class.classes.get(i);
+            output = output + "(" + i + "," + temp.sujectID + "," + temp.classRoomID + "," + temp.credits + "," + temp.year + "-" + temp.month + "-" + temp.day + "," + temp.hour + ":" + temp.minute + "," + temp.length + "," + temp.mondaySchedule + "," + temp.tuesdaySchedule + "," + temp.wednesdaySchedule + "," + temp.thursdaySchedule + "," + temp.fridaySchedule + "," + temp.saturdaySchedule + ")";
+            if (i == Staff.staff.size() - 1) {
                 output = output + ";";
             } else {
                 output = output + ",\n";
