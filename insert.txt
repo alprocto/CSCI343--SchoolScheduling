@@ -1,0 +1,59 @@
+INSERT INTO
+Staff(StaffID, StfFirstName, StfLastName, StfStreetAddress, StfState, StfZipCode, StfAreaCode, StfPhoneNumber, Salary, DateHired, Position)
+VALUES (int, varchar, varchar, varchar, varchar, varchar, int, int, bigint, int, date, varchar);
+
+INSERT INTO
+Departments(DepartmentID, DeptName, DeptChair, Staff_StaffID)
+VALUES (int, varchar, varchar, int);
+
+INSERT INTO
+Faculty_Categories(Categories_CategoryID, Staff_StaffID)
+VALUES (int, int);
+
+INSERT INTO
+Faculty(StaffID, Title, Status, Tenured)
+VALUES (int, varchar, varchar, boolean);
+
+INSERT INTO
+Categories(CategoryID, CategoryDescription, Departments_DepartmentID)
+VALUES (int, varchar, int);
+
+INSERT INTO
+Faculty_Classes(Faculty_StaffID, Classes_ClassID, Staff_StaffID)
+VALUES (int, int, int);
+
+INSERT INTO
+Subjects(SubjectID, SubjectCode, SubjectName, SubjectPreReq, SubjectDescription, Categories_CategoryID)
+VALUES (int, int, varchar, varchar, varchar, varchar, int);
+
+INSERT INTO
+Faculty_Subjects(ProficiencyRating, Faculty_StaffID, Subjects_SubjectID)
+VALUES (decimal, int, int);
+
+INSERT INTO
+Classes(ClassID, ClassRoomID, Credits, StartDate, Duration, MondaySchedule, TuesdaySchedule, WednesdaySchedule, ThursdaySchedule, FridaySchedule, SaturdaySchedule, Subjects_SubjectID, Class_Rooms_ClassRoomID, Class_Rooms_Buildings_BuildingCode)
+VALUES (int, varchar, int, date, int, boolean, boolean, boolean, boolean, boolean, boolean, int, int, int);
+
+INSERT INTO
+Class_Rooms(ClassRoomID, PhoneAvailable, Buildings_BuildingCode, RoomNumber)
+VALUES (int, boolean, int, int);
+
+INSERT INTO
+Buildings(BuildingCode, BuildingName, NumberOfFloors, ElevatorAccess, SiteParkingAvailable)
+VALUES (varchar, varchar, int, boolean, boolean);
+
+INSERT INTO
+Student_Class_Status(ClassStatus, ClassStatusDescription)
+VALUES (varchar, varchar);
+
+INSERT INTO
+Student_Schedules(ClassStatus, Grade, Students_StudentID, Classes_ClassID, Student_Class_Status_ClassStatus)
+VALUES (varchar, decimal, int, int, varchar);
+
+INSERT INTO
+Students(StudentID, StudentFirstName, StudentLastName, StudStreetAddress, StudCity, StudState, StudZipCode, StudAreaCode, StudPhoneNumber, StudGPA, StudMajor)
+VALUES (int, varchar, varchar, varchar, varchar, varchar, varchar, int, int, bigint, decimal, int);
+
+INSERT INTO
+Majors(MajorID, Major)
+VALUES (int, varchar);
