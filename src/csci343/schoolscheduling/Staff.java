@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package csci343.schoolscheduling;
+
 import java.io.*;
 import java.util.*;
 
@@ -13,34 +13,39 @@ import java.util.*;
  * @author Amanda
  */
 public class Staff {
-    
-   private static String positions[]={"Faculty", "Staff"};
-   private static ArrayList<Staff> staff= new ArrayList();
+
+    private static String positions[] = {"Faculty", "Staff"};
+    private static ArrayList<Staff> staff = new ArrayList();
     private int salary;
     private int month;
     private int day;
     private int year;
     private String position;
-    
-    
-    
-   public static Staff random(){
-       Staff temp = new Staff();
+
+    public static Staff random() {
+        Staff temp = new Staff();
         Random rand = new Random();
-        temp.salary = rand.nextInt(71)*1000+30000;
-        temp.month = rand.nextInt(12)+1;
-        temp.day = rand.nextInt(28)+1;
-        temp.year = rand.nextInt(5)+2012;
-        int i=rand.nextInt(2);
-        temp.position= positions[i];
+        temp.salary = rand.nextInt(71) * 1000 + 30000;
+        temp.month = rand.nextInt(12) + 1;
+        temp.day = rand.nextInt(28) + 1;
+        temp.year = rand.nextInt(5) + 2012;
+        int i = rand.nextInt(2);
+        temp.position = positions[i];
         staff.add(temp);
-        if(i==0){
-            Faculty.random(staff.size()-1);
+        if (i == 0) {
+            Faculty.random(staff.size() - 1);
         }
         return temp;
     }
-    public String toString(){
+
+    public String toString() {
         return salary + ", " + month + ", " + day + ", " + year;
     }
-    
+
+    public static void generateStaff(int number) {
+        for (int i = 0; i < number; i++) {
+            random();
+        }
+
+    }
 }

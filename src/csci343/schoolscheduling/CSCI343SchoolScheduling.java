@@ -24,8 +24,8 @@ public class CSCI343SchoolScheduling {
      */
     public static void main(String[] args) throws FileNotFoundException {
         setup();
-        test1.main(args);
-        test2.main(args);
+//        test1.main(args);
+//        test2.main(args);
         // TODO code application logic here
     }
 
@@ -33,6 +33,11 @@ public class CSCI343SchoolScheduling {
         Address.initialize(new File("streetNames.txt"), new File("us_postal_codes.csv"));
         Surname.initialize(new File("lastNames.txt"), 500);             //limit to first 500 names
         FirstName.initialize(new File("names\\yob1990.txt"), 250);      //limit to first 250 female and first 250 male names
+        Building.generateBuildings(10);
         Student.generateStudents(50);
+        Staff.generateStaff(50);
+        Department.initialize();
+        Subject.initialize(new File("coursescsv.csv"));
+        Class.generateClasses(100);
     }
 }

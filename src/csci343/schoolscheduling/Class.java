@@ -13,21 +13,23 @@ import java.util.*;
  * @author alprocto
  */
 public class Class {
+
     protected static ArrayList<Class> classes = new ArrayList();
 
-    private int credits;
-    private int month;
-    private int day;
-    private int year;
-    private int hour;
-    private int minute;
-    private int length;
-    private Boolean mondaySchedule;
-    private Boolean tuesdaySchedule;
-    private Boolean wednesdaySchedule;
-    private Boolean thursdaySchedule;
-    private Boolean fridaySchedule;
-    private Boolean saturdaySchedule;
+    protected int credits;
+    protected int month;
+    protected int day;
+    protected int year;
+    protected int hour;
+    protected int minute;
+    protected int length;
+    protected Boolean mondaySchedule;
+    protected Boolean tuesdaySchedule;
+    protected Boolean wednesdaySchedule;
+    protected Boolean thursdaySchedule;
+    protected Boolean fridaySchedule;
+    protected Boolean saturdaySchedule;
+    protected int classRoomID;
 
     public static Class random() {
         Class temp = new Class();
@@ -40,11 +42,12 @@ public class Class {
         temp.fridaySchedule = rand.nextBoolean();
         temp.saturdaySchedule = rand.nextBoolean();
         temp.length = rand.nextInt(10) * 15 + 45;
-        temp.month = rand.nextInt(12)+1;
-        temp.day = rand.nextInt(28)+1;
-        temp.hour = rand.nextInt(12)+8;
-        temp.minute = rand.nextInt(4)*15;
-        temp.year = rand.nextInt(5)+2012;
+        temp.month = rand.nextInt(12) + 1;
+        temp.day = rand.nextInt(28) + 1;
+        temp.hour = rand.nextInt(12) + 8;
+        temp.minute = rand.nextInt(4) * 15;
+        temp.year = rand.nextInt(5) + 2012;
+        temp.classRoomID = rand.nextInt(Building.classRooms.size());
         classes.add(temp);
 
         return temp;
@@ -53,4 +56,11 @@ public class Class {
     public String toString() {
         return month + ", " + day + ", " + year + ", " + hour + ", " + minute + ", " + length + ", " + mondaySchedule + ", " + tuesdaySchedule + ", " + wednesdaySchedule + ", " + thursdaySchedule + ", " + fridaySchedule + ", " + saturdaySchedule;
     }
+
+    public static void generateClasses(int number) {
+        for (int i = 0; i < number; i++) {
+            random();
+        }
+    }
+
 }

@@ -23,8 +23,6 @@ public class Building {
     private String buildingCode;
     private Boolean elavatorAccess;
     private Boolean siteParkingAvailable;
-    
-    
 
     public static Building random() {
         Building temp = new Building();
@@ -39,14 +37,14 @@ public class Building {
         } else {
             buildingCodes.add(temp.buildingCode);
             buildings.add(temp);
-            for(int x=1; x<=temp.numberOfFloors; x++){
-               int numOfRooms = rand.nextInt(10)+10;
-               for(int i=1; i<=numOfRooms; i++){
-                 ClassRoom room = new ClassRoom(temp.buildingCode, rand.nextBoolean(), x*100 + i);
-                 classRooms.add(room);
-               }
+            for (int x = 1; x <= temp.numberOfFloors; x++) {
+                int numOfRooms = rand.nextInt(10) + 10;
+                for (int i = 1; i <= numOfRooms; i++) {
+                    ClassRoom room = new ClassRoom(temp.buildingCode, rand.nextBoolean(), x * 100 + i);
+                    classRooms.add(room);
+                }
             }
-            
+
             return temp;
 
         }
@@ -55,5 +53,12 @@ public class Building {
     @Override
     public String toString() {
         return buildingCode.toString() + ", " + buildingName + ", " + numberOfFloors + ", " + elavatorAccess + ", " + siteParkingAvailable;
+    }
+
+    public static void generateBuildings(int number) {
+        for (int i = 0; i < number; i++) {
+            random();
+        }
+
     }
 }
