@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,14 +13,14 @@ import java.util.*;
  *
  * @author alprocto
  */
-//public class Subject {
-  //  protected static ArrayList<Subject> subjects = new ArrayList();
+public class Subject {
+    protected static ArrayList<Subject> subjects = new ArrayList();
    
-  //  protected int categoryID;
-  //  protected String subjectCode;
-   // protected String subjectName;
-    //protected String subjectPreReq;
-   // protected String subjectDescription;
+    protected int categoryID;
+    protected String subjectCode;
+    protected String subjectName;
+    protected String subjectPreReq;
+    protected String subjectDescription;
     
     /**
      *
@@ -29,7 +28,7 @@ import java.util.*;
      * @param subjectName
      * @param description
      */
-    /*public static void initialize(File subjectFile) throws FileNotFoundException{
+    public static void initialize(File subjectFile) throws FileNotFoundException{
         Scanner scanner = new Scanner(subjectFile);
         scanner.nextLine();         //get rid of first line
         while (scanner.hasNextLine()) {
@@ -46,7 +45,7 @@ import java.util.*;
         }
     }
     public Subject(String category, String subjectName, String description, String preReq, String code){
-        this.categoryID=Section.getID(category);
+        this.categoryID=Category.getID(category);
         this.subjectName=subjectName;
         this.subjectDescription=description;
         this.subjectCode = code;
@@ -61,4 +60,8 @@ import java.util.*;
            
 //           generateAddress
     
- */   
+    public int getID(){
+        return 1;
+    }
+    
+}
