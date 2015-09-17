@@ -5,8 +5,7 @@
  */
 package csci343.schoolscheduling;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -14,23 +13,23 @@ import java.util.*;
  * @author alprocto
  */
 public class Subject {
+
     protected static ArrayList<Subject> subjects = new ArrayList();
-   
+
     protected int categoryID;
     protected String subjectCode;
     protected String subjectName;
     protected String subjectPreReq;
     protected String subjectDescription;
-    
+
     /**
      *
-     * @param category
-     * @param subjectName
-     * @param description
+     * @param subjectFile
+     * @throws java.io.FileNotFoundException
      */
-    public static void initialize(File subjectFile) throws FileNotFoundException{
+    public static void initialize(File subjectFile) throws FileNotFoundException {
         Scanner scanner = new Scanner(subjectFile);
-        scanner.nextLine();         //get rid of first line
+//        System.out.println(scanner.nextLine());         //get rid of first line
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String parts[] = line.split(",");
@@ -38,30 +37,30 @@ public class Subject {
                 Subject temp = new Subject(parts[0], parts[1], parts[2], parts[3], parts[4]);
 //                System.out.println(temp.toString());
                 subjects.add(temp);
-            } else{
+            } else {
 //                System.out.println(line);
             }
 
         }
     }
-    public Subject(String category, String subjectName, String description, String preReq, String code){
-        this.categoryID=Category.getID(category);
-        this.subjectName=subjectName;
-        this.subjectDescription=description;
+
+    public Subject(String category, String subjectName, String description, String preReq, String code) {
+        this.categoryID = Category.getID(category);
+        this.subjectName = subjectName;
+        this.subjectDescription = description;
         this.subjectCode = code;
-        this.subjectPreReq=preReq;
-        
+        this.subjectPreReq = preReq;
+
     }
-    
+
     @Override
-    public String toString(){
-        return "-1";
+    public String toString() {
+        return categoryID + ", " + subjectCode + ", " + subjectName + ", " + subjectPreReq + ", " + subjectDescription;
     }
-           
+
 //           generateAddress
-    
-    public int getID(){
+    public int getID() {
         return 1;
     }
-    
+
 }
