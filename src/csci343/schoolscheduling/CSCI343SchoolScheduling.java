@@ -47,7 +47,7 @@ public class CSCI343SchoolScheduling {
     }
 
     private static String getData() {
-        return staff() + "\n\n" + departments() + "\n\n" + facultyCategories() + "\n\n" + faculty();
+        return staff() + "\n\n" + departments() + "\n\n" + facultyCategories() + "\n\n" + faculty() +"\n\n" + categories();
     }
 
     private static String staff() {
@@ -115,6 +115,24 @@ public class CSCI343SchoolScheduling {
             Faculty temp = Faculty.list.get(i);
             output = output + "(" + temp.staffID + "," + temp.title + "," + temp.status + "," + temp.tenured + ")";
             if (i == Faculty.list.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
+    private static String categories() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Categories(CategoryID, CategoryDescription, DepartmentID)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Category.categories.size(); i++) {
+            output = output + "(" + i + "," + Category.categories.get(i).getDescription()+ "," + Category.categories.get(i).getDepartmentID() + ")";
+            if (i == Category.categories.size() - 1) {
                 output = output + ";";
             } else {
                 output = output + ",\n";

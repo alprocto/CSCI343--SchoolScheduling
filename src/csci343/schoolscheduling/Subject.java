@@ -29,7 +29,7 @@ public class Subject {
      */
     public static void initialize(File subjectFile) throws FileNotFoundException {
         Scanner scanner = new Scanner(subjectFile);
-//        System.out.println(scanner.nextLine());         //get rid of first line
+        scanner.nextLine();         //get rid of first line
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String parts[] = line.split(",");
