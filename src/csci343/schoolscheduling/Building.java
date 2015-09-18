@@ -18,11 +18,11 @@ public class Building {
     private static ArrayList<String> buildingCodes = new ArrayList();
     protected static ArrayList<ClassRoom> classRooms = new ArrayList();
 
-    private String buildingName;
-    private Integer numberOfFloors;
-    private String buildingCode;
-    private Boolean elavatorAccess;
-    private Boolean siteParkingAvailable;
+    protected String buildingName;
+    protected Integer numberOfFloors;
+    protected String buildingCode;
+    protected Boolean elavatorAccess;
+    protected Boolean siteParkingAvailable;
 
     public static Building random() {
         Building temp = new Building();

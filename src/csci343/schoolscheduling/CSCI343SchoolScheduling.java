@@ -55,7 +55,11 @@ public class CSCI343SchoolScheduling {
                 + "\n\n" + facultyCategories()
                 + "\n\n" + subjects()
                 + "\n\n" + facultySubjects()
-                + "\n\n" + classes();
+                + "\n\n" + classes()
+                + "\n\n" + classRooms()
+                + "\n\n" + buildings()
+                + "\n\n" + studentClassStatus()
+                + "\n\n" + studentSchedules();
     }
 
     private static String staff() {
@@ -215,6 +219,78 @@ public class CSCI343SchoolScheduling {
             Class temp = Class.classes.get(i);
             output = output + "(" + i + "," + temp.sujectID + "," + temp.classRoomID + "," + temp.credits + "," + temp.year + "-" + temp.month + "-" + temp.day + "," + temp.hour + ":" + temp.minute + "," + temp.length + "," + temp.mondaySchedule + "," + temp.tuesdaySchedule + "," + temp.wednesdaySchedule + "," + temp.thursdaySchedule + "," + temp.fridaySchedule + "," + temp.saturdaySchedule + ")";
             if (i == Staff.staff.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
+    private static String classRooms() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Class_Rooms(ClassRoomID, RoomNumber, BuildingCode, PhoneAvailable)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Building.classRooms.size(); i++) {
+            output = output + "(" + i + "," + Building.classRooms.get(i).roomNumber + "," + Building.classRooms.get(i).buildingCode + "," + Building.classRooms.get(i).phoneAvailable + ")";
+            if (i == Building.classRooms.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
+    private static String buildings() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Buildings(BuildingCode, BuildingName, NumberOfFloors, ElevatorAccess, SiteParkingAvailable)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Building.buildings.size(); i++) {
+            output = output + "(" + i + "," + Building.buildings.get(i).buildingCode + "," + Building.buildings.get(i).buildingName + "," + Building.buildings.get(i).numberOfFloors + "," + Building.buildings.get(i).elavatorAccess + "," + Building.buildings.get(i).siteParkingAvailable + ")";
+            if (i == Building.buildings.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
+    private static String studentClassStatus() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Student_Class_Status(ClassStatus, ClassStatusDescription)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Student_Class_Status.status.length; i++) {
+            output = output + "(" + i + "," + Student_Class_Status.status[i] + ")";
+            if (i == Student_Class_Status.status.length - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
+    private static String studentSchedules() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Student_Schedules(StudentID, ClassID, ClassStatus, Grade)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Student_Schedules.schedules.size(); i++) {
+            output = output + "(" + Student_Schedules.schedules.get(i).studentID + "," + Student_Schedules.schedules.get(i).classID + "," + Student_Schedules.schedules.get(i).classStatus + "," + Student_Schedules.schedules.get(i).grade + ")";
+            if (i == Student_Schedules.schedules.size() - 1) {
                 output = output + ";";
             } else {
                 output = output + ",\n";
