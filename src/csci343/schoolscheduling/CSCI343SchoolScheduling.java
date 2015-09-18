@@ -25,8 +25,6 @@ public class CSCI343SchoolScheduling {
     public static void main(String[] args) throws FileNotFoundException {
         setup();
         System.out.println(getData());
-//        test1.main(args);
-//        test2.main(args);
         // TODO code application logic here
     }
 
