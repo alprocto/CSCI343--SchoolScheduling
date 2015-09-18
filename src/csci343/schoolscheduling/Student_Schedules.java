@@ -24,8 +24,13 @@ public class Student_Schedules {
         temp.studentID = rand.nextInt(Student.students.size());
         temp.classID = rand.nextInt(Class.classes.size());
         temp.classStatus = Student_Class_Status.random();
-        temp.grade = (double)rand.nextInt(5);
+        temp.grade = (double)rand.nextInt(4)+1.0;
         
+        for (int i =0; i<schedules.size(); i++){
+            if (schedules.get(i).studentID==temp.studentID && schedules.get(i).classID==temp.classID && schedules.get(i).classStatus==temp.classStatus){
+                return random();
+            }
+        }
         
         schedules.add(temp);
                 
@@ -38,7 +43,7 @@ public class Student_Schedules {
         for(int x=0; x<schedules.size(); x++){
             if(schedules.get(x).studentID==student){
                 numOfCredits+=Class.classes.get(schedules.get(x).classID).credits;
-                gpaPoints+=schedules.get(x).grade;
+                gpaPoints+=schedules.get(x).grade*Class.classes.get(schedules.get(x).classID).credits;
             }
         }
         if(numOfCredits == 0){

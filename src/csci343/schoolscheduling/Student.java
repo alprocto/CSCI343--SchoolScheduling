@@ -6,6 +6,7 @@
 package csci343.schoolscheduling;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -13,12 +14,18 @@ import java.util.ArrayList;
  */
 public class Student{
     protected static ArrayList<Student> students = new ArrayList<>();
-    private Person person;
+    protected Person person;
+    protected int majorID;
     
 public static void generateStudents(int number){
+          Random rand = new Random();
+  
     for (int i = 0; i<number; i++){
         Student temp = new Student();
         temp.person=new Person();
+        
+        temp.majorID=rand.nextInt(Category.categories.size());
+        //for major use Category.categories.get(majorID).getDescription();
         students.add(temp);
     }
 }    

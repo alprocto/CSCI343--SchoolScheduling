@@ -35,29 +35,31 @@ public class CSCI343SchoolScheduling {
         Surname.initialize(new File("lastNames.txt"), 500);             //limit to first 500 names
         FirstName.initialize(new File("names\\yob1990.txt"), 250);      //limit to first 250 female and first 250 male names
         Building.generateBuildings(10);
-        Student.generateStudents(50);
         Staff.generateStaff(50);
         Department.initialize();
         Subject.initialize(new File("coursescsv.csv"));
         Class.generateClasses(100);
+        Student.generateStudents(50);
         Faculty_Categories.generate(50);
         Faculty_Classes.generate(20);
         Faculty_Subjects.generate(20);
-        Student_Schedules.generate(100);
+        Student_Schedules.generate(1000);
     }
 
     private static String getData() {
-        return staff()
-                + "\n\n" + departments()
-                + "\n\n" + facultyCategories()
-                + "\n\n" + faculty()
-                + "\n\n" + categories()
-                + "\n\n" + facultyCategories()
-                + "\n\n" + subjects()
-                + "\n\n" + facultySubjects()
-                + "\n\n" + classes()
+        return buildings()
                 + "\n\n" + classRooms()
-                + "\n\n" + buildings()
+                + "\n\n" + staff()
+                + "\n\n" + faculty()
+                + "\n\n" + departments()
+                + "\n\n" + categories()
+                + "\n\n" + subjects()
+                + "\n\n" + classes()
+                + "\n\n" + majors()
+                + "\n\n" + students()
+                + "\n\n" + facultyCategories()
+                + "\n\n" + facultyClasses()
+                + "\n\n" + facultySubjects()
                 + "\n\n" + studentClassStatus()
                 + "\n\n" + studentSchedules();
     }
@@ -65,13 +67,13 @@ public class CSCI343SchoolScheduling {
     private static String staff() {
         String output = new String();
         output = "INSERT INTO\n"
-                + "Staff(StaffID, StfFirstName, StfLastName, StfStreetAddress, StfState, StfZipCode, StfAreaCode, StfPhoneNumber, Salary, DateHired, Position)\n"
+                + "Staff(StaffID, StfFirstName, StfLastName, StfStreetAddress, StfCity, StfState, StfZipCode, StfAreaCode, StfPhoneNumber, Salary, DateHired, Position)\n"
                 + "VALUES ";
 
         for (int i = 0; i < Staff.staff.size(); i++) {
             Staff temp = Staff.staff.get(i);
             Person tempPerson = new Person();
-            output = output + "(" + i + "," + tempPerson.getFirstName() + "," + tempPerson.getLastName() + "," + tempPerson.getStreetAddress() + "," + tempPerson.getState() + "," + tempPerson.getZipCode() + "," + tempPerson.getAreaCode() + "," + tempPerson.getPhoneNumber() + "," + temp.salary + "," + temp.year + "-" + temp.month + "-" + temp.day + "," + temp.position + ")";
+            output = output + "(" + i + ",'" + tempPerson.getFirstName() + "','" + tempPerson.getLastName() + "','" + tempPerson.getStreetAddress() + "','" + tempPerson.getCity() + "','" + tempPerson.getState() + "','" + tempPerson.getZipCode() + "'," + tempPerson.getAreaCode() + "," + tempPerson.getPhoneNumber() + "," + temp.salary + ",'" + temp.year + "-" + temp.month + "-" + temp.day + "','" + temp.position + "')";
             if (i == Staff.staff.size() - 1) {
                 output = output + ";";
             } else {
@@ -89,7 +91,7 @@ public class CSCI343SchoolScheduling {
                 + "VALUES ";
 
         for (int i = 0; i < Department.name.length; i++) {
-            output = output + "(" + i + "," + Department.name[i] + "," + Department.chairID[i] + ")";
+            output = output + "(" + i + ",'" + Department.name[i] + "'," + Department.chairID[i] + ")";
             if (i == Department.name.length - 1) {
                 output = output + ";";
             } else {
@@ -125,7 +127,7 @@ public class CSCI343SchoolScheduling {
 
         for (int i = 0; i < Faculty.list.size(); i++) {
             Faculty temp = Faculty.list.get(i);
-            output = output + "(" + temp.staffID + "," + temp.title + "," + temp.status + "," + temp.tenured + ")";
+            output = output + "(" + temp.staffID + ",'" + temp.title + "','" + temp.status + "'," + temp.tenured + ")";
             if (i == Faculty.list.size() - 1) {
                 output = output + ";";
             } else {
@@ -143,7 +145,7 @@ public class CSCI343SchoolScheduling {
                 + "VALUES ";
 
         for (int i = 0; i < Category.categories.size(); i++) {
-            output = output + "(" + i + "," + Category.categories.get(i).getDescription() + "," + Category.categories.get(i).getDepartmentID() + ")";
+            output = output + "(" + i + ",'" + Category.categories.get(i).getDescription() + "'," + Category.categories.get(i).getDepartmentID() + ")";
             if (i == Category.categories.size() - 1) {
                 output = output + ";";
             } else {
@@ -180,7 +182,7 @@ public class CSCI343SchoolScheduling {
 
         for (int i = 0; i < Subject.subjects.size(); i++) {
             Subject temp = Subject.subjects.get(i);
-            output = output + "(" + i + "," + temp.subjectCode + "," + temp.subjectName + "," + temp.subjectPreReq + "," + temp.subjectDescription + "," + temp.categoryID + ")";
+            output = output + "(" + i + ",'" + temp.subjectCode + "','" + temp.subjectName + "','" + temp.subjectPreReq + "','" + temp.subjectDescription + "'," + temp.categoryID + ")";
             if (i == Subject.subjects.size() - 1) {
                 output = output + ";";
             } else {
@@ -217,8 +219,8 @@ public class CSCI343SchoolScheduling {
 
         for (int i = 0; i < Class.classes.size(); i++) {
             Class temp = Class.classes.get(i);
-            output = output + "(" + i + "," + temp.sujectID + "," + temp.classRoomID + "," + temp.credits + "," + temp.year + "-" + temp.month + "-" + temp.day + "," + temp.hour + ":" + temp.minute + "," + temp.length + "," + temp.mondaySchedule + "," + temp.tuesdaySchedule + "," + temp.wednesdaySchedule + "," + temp.thursdaySchedule + "," + temp.fridaySchedule + "," + temp.saturdaySchedule + ")";
-            if (i == Staff.staff.size() - 1) {
+            output = output + "(" + i + "," + temp.sujectID + "," + temp.classRoomID + "," + temp.credits + ",'" + temp.year + "-" + temp.month + "-" + temp.day + "','" + temp.hour + ":" + temp.minute + "'," + temp.length + "," + temp.mondaySchedule + "," + temp.tuesdaySchedule + "," + temp.wednesdaySchedule + "," + temp.thursdaySchedule + "," + temp.fridaySchedule + "," + temp.saturdaySchedule + ")";
+            if (i == Class.classes.size() - 1) {
                 output = output + ";";
             } else {
                 output = output + ",\n";
@@ -235,7 +237,7 @@ public class CSCI343SchoolScheduling {
                 + "VALUES ";
 
         for (int i = 0; i < Building.classRooms.size(); i++) {
-            output = output + "(" + i + "," + Building.classRooms.get(i).roomNumber + "," + Building.classRooms.get(i).buildingCode + "," + Building.classRooms.get(i).phoneAvailable + ")";
+            output = output + "(" + i + "," + Building.classRooms.get(i).roomNumber + ",'" + Building.classRooms.get(i).buildingCode + "'," + Building.classRooms.get(i).phoneAvailable + ")";
             if (i == Building.classRooms.size() - 1) {
                 output = output + ";";
             } else {
@@ -253,7 +255,7 @@ public class CSCI343SchoolScheduling {
                 + "VALUES ";
 
         for (int i = 0; i < Building.buildings.size(); i++) {
-            output = output + "(" + i + "," + Building.buildings.get(i).buildingCode + "," + Building.buildings.get(i).buildingName + "," + Building.buildings.get(i).numberOfFloors + "," + Building.buildings.get(i).elavatorAccess + "," + Building.buildings.get(i).siteParkingAvailable + ")";
+            output = output + "('" + Building.buildings.get(i).buildingCode + "','" + Building.buildings.get(i).buildingName + "'," + Building.buildings.get(i).numberOfFloors + "," + Building.buildings.get(i).elavatorAccess + "," + Building.buildings.get(i).siteParkingAvailable + ")";
             if (i == Building.buildings.size() - 1) {
                 output = output + ";";
             } else {
@@ -271,7 +273,7 @@ public class CSCI343SchoolScheduling {
                 + "VALUES ";
 
         for (int i = 0; i < Student_Class_Status.status.length; i++) {
-            output = output + "(" + i + "," + Student_Class_Status.status[i] + ")";
+            output = output + "(" + i + ",'" + Student_Class_Status.status[i] + "')";
             if (i == Student_Class_Status.status.length - 1) {
                 output = output + ";";
             } else {
@@ -299,5 +301,44 @@ public class CSCI343SchoolScheduling {
         return output;
 
     }
+
+    private static String students() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Students(StudentID, StudFirstName, StudLastName, StudStreetAddress, StudCity, StudState, StudZipCode, StudAreaCode, StudPhoneNumber, StudGPA, StudMajor)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Student.students.size(); i++) {
+            Student temp = Student.students.get(i);
+            Person tempPerson = new Person();
+            output = output + "(" + i + ",'" + tempPerson.getFirstName() + "','" + tempPerson.getLastName() + "','" + tempPerson.getStreetAddress() + "','" + tempPerson.getCity() + "','" + tempPerson.getState() + "','" + tempPerson.getZipCode() + "'," + tempPerson.getAreaCode() + "," + tempPerson.getPhoneNumber() + "," + temp.getGPA()+ "," + temp.majorID + ")";
+            if (i == Student.students.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+    
+        private static String majors() {
+        String output = new String();
+        output = "INSERT INTO\n"
+                + "Majors(MajorID, Major)\n"
+                + "VALUES ";
+
+        for (int i = 0; i < Category.categories.size(); i++) {
+            output = output + "(" + i + ",'" + Category.categories.get(i).getDescription() + "')";
+            if (i == Category.categories.size() - 1) {
+                output = output + ";";
+            } else {
+                output = output + ",\n";
+            }
+        }
+        return output;
+
+    }
+
 
 }

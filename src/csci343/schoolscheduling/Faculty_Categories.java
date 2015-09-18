@@ -22,11 +22,16 @@ public class Faculty_Categories {
         temp.staffID = Faculty.list.get(rand.nextInt(Faculty.list.size())).staffID;
         temp.categoryID = rand.nextInt(Category.categories.size());
         
-        
+        for (int i =0; i<categories.size(); i++){
+            if (categories.get(i).categoryID==temp.categoryID && categories.get(i).staffID==temp.staffID){
+                return random();
+            }
+        }
         
         categories.add(temp);
                 
         return temp;
+        
     }
     
     public static void generate(int number) {

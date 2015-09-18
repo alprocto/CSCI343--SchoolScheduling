@@ -22,7 +22,11 @@ public class Faculty_Classes {
         temp.staffID = Faculty.list.get(rand.nextInt(Faculty.list.size())).staffID;
         temp.classID = rand.nextInt(Class.classes.size());
         
-        
+        for (int i =0; i<classes.size(); i++){
+            if (classes.get(i).staffID==temp.staffID && classes.get(i).classID==temp.classID){
+                return random();
+            }
+        }
         
         classes.add(temp);
                 
